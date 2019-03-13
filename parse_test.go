@@ -80,3 +80,10 @@ func TestCatechism_GetParagraph_InvalidParagraph(t *testing.T) {
 	_, err := c.GetParagraph(1, 1, 1, 100)
 	assert.Equal(t, "invalid paragraph number", err.Error())
 }
+
+func TestCatechism_Search(t *testing.T) {
+	p := c.Search("I believe", 10)
+
+	assert.NotEmpty(t, p)
+	assert.Equal(t, "Part 4, Article 3, Section 4, Paragraph 1", p[0].String())
+}
