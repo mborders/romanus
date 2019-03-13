@@ -1,0 +1,19 @@
+language: go
+
+go:
+- 1.11.x
+- tip
+
+before_install:
+- go get -t -v ./...
+
+script:
+- go test -coverprofile=coverage.txt -covermode=atomic
+
+after_success:
+- bash <(curl -s https://codecov.io/bash)
+
+notifications:
+  slack:
+    secure:
+      secure: qFfmeyowy42QiGWRaB7AaTtRHwsHwbpJkayTRlx3zol1ylQC+jufVOwPnBWa0m3j08kEkPLad23J1vTk8jEoqHC3DVy6Ow75cTH5wRkMCW9sHuF45laI9Q8PGAnst4trdq4FJ2UiPyVznHkuileBEMblPrieg+WnukVzxIEbvzuUaDhvpBhcdSuCsLYq72HDbwc1fv8a+TBE91avJyL+mqURYWRhUkjutRUgHfLfEHSNQ/Pg0/n1qAHYTtGzFvku2iU3gXKTX/s3pbUVjqi3Stew2qzfcXjq/N3Zg5Rf2CJt6KO9bet6X+9/xnkPqmqEmDTewXAhJP4M9JLwVT0H4jcuiK4wIildZHzBppCBtarpVk0NXwUvezKvoK4aULiDe6e7ocqieE6pYzT8M90vuEQEP6Ac3zXghC/F6z4iZz/gVuBdVAJkKuJhoHF+Ut6n14DDNZyod4GVy6+igdyDZjPHzAlESYoAWy7wyNbhEQxVAOvsQhJhcN/5jsMotSZdqVCOP1QTmPesfxLZ1v8O+NAX66Xt+fa7hggamNrXu1QFlogzRkkIlw8rOXi38K+ZK2/MEnzlSy2YecxQ4Ybqiqt5lKKQy8pwFLlYe9JR+9F0dGkUgsTg1mOFGiys64INfReRY7SyzzA3jHSVF421VvCNJ81i0znh19VAmtfDFpc=
