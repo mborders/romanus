@@ -7,8 +7,9 @@ import (
 
 // Catechism contains a list of parts
 type Catechism struct {
-	Parts      []Part `json:"parts"`
-	searchTree *trie.Trie
+	Parts       []Part        `json:"-"`
+	partSummary []PartSummary `json:"parts"`
+	searchTree  *trie.Trie
 }
 
 // Part contains a list of articles
@@ -36,6 +37,19 @@ type Section struct {
 type Paragraph struct {
 	ParagraphNumber uint8  `json:"paragraphNumber"`
 	Text            string `json:"text"`
+}
+
+// PartSummary contains metadata for a part
+type PartSummary struct {
+	Title      string           `json:"title"`
+	PartNumber uint8            `json:"partNumber"`
+	Articles   []ArticleSummary `json:"articles"`
+}
+
+// ArticleSummary contains metadata for an article
+type ArticleSummary struct {
+	Title         string `json:"title"`
+	ArticleNumber uint8  `json:"articleNumber"`
 }
 
 // GetPart obtains a part within the catechism by its number

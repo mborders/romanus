@@ -86,6 +86,9 @@ func NewCatechism() *Catechism {
 		}
 	}
 
+	// Build summary
+	catechism.buildSummary()
+
 	return catechism
 }
 
@@ -93,6 +96,29 @@ func decode(r io.Reader) []Part {
 	var parts []Part
 	json.NewDecoder(r).Decode(&parts)
 	return parts
+}
+
+func (c *Catechism) buildSummary() {
+	c.partSummary = []PartSummary{}
+
+	for i := range c.Parts {
+		part := c.Parts[i]
+		ps := PartSummary{
+			Title: part.Title,
+			PartNumber: part.PartNumber,
+			Articles: []ArticleSummary{},
+		}
+
+		for j := range part.Articles {
+			a := part.Articles[j]
+			ps.Articles = append(ps.Articles, ArticleSummary{
+				Title: a.Title,
+				ArticleNumber: a.ArticleNumber,
+			})
+		}
+
+		c.partSummary = append(c.partSummary, ps)
+	}
 }
 
 // Search finds top matching verses based on the given query.
