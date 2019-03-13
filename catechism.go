@@ -18,7 +18,7 @@ type Part struct {
 	Articles   []Article `json:"articles"`
 }
 
-// Articles contains a list of sections
+// Article contains a list of sections
 type Article struct {
 	Title         string    `json:"title"`
 	ArticleNumber uint8     `json:"articleNumber"`
