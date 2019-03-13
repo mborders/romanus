@@ -99,7 +99,7 @@ func decode(r io.Reader) []Part {
 }
 
 func (c *Catechism) buildSummary() {
-	c.partSummary = []PartSummary{}
+	c.PartSummary = []PartSummary{}
 
 	for i := range c.Parts {
 		part := c.Parts[i]
@@ -117,7 +117,7 @@ func (c *Catechism) buildSummary() {
 			})
 		}
 
-		c.partSummary = append(c.partSummary, ps)
+		c.PartSummary = append(c.PartSummary, ps)
 	}
 }
 

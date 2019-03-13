@@ -8,7 +8,7 @@ import (
 // Catechism contains a list of parts
 type Catechism struct {
 	Parts       []Part        `json:"-"`
-	partSummary []PartSummary `json:"parts"`
+	PartSummary []PartSummary `json:"parts"`
 	searchTree  *trie.Trie
 }
 
