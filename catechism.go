@@ -5,29 +5,34 @@ import (
 	"github.com/derekparker/trie"
 )
 
+// Catechism contains a list of parts
 type Catechism struct {
 	Parts      []Part `json:"parts"`
 	searchTree *trie.Trie
 }
 
+// Part contains a list of articles
 type Part struct {
 	Title      string    `json:"title"`
 	PartNumber uint8     `json:"partNumber"`
-	Articles   []Article `json:"articles`
+	Articles   []Article `json:"articles"`
 }
 
+// Articles contains a list of sections
 type Article struct {
 	Title         string    `json:"title"`
 	ArticleNumber uint8     `json:"articleNumber"`
 	Sections      []Section `json:"sections"`
 }
 
+// Section contains a list of paragraphs
 type Section struct {
 	Title         string      `json:"title"`
 	SectionNumber uint8       `json:"sectionNumber"`
 	Paragraphs    []Paragraph `json:"paragraphs"`
 }
 
+// Paragraph contains text
 type Paragraph struct {
 	ParagraphNumber uint8  `json:"paragraphNumber"`
 	Text            string `json:"text"`

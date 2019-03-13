@@ -14,6 +14,7 @@ import (
 	"github.com/derekparker/trie"
 )
 
+// SearchNode represents a search result for a given paragraph inquiry
 type SearchNode struct {
 	Part      *Part
 	Article   *Article
@@ -28,12 +29,13 @@ func (s *SearchNode) String() string {
 		s.Part.PartNumber,
 		s.Article.ArticleNumber,
 		s.Section.SectionNumber,
-		s.Paragraph.ParagraphNumber);
+		s.Paragraph.ParagraphNumber)
 }
 
 const catechismTar = "catechism.tar.gz"
 const catechismFilename = "catechism.json"
 
+// NewCatechism parses and creates a new catechism instance
 func NewCatechism() *Catechism {
 	_, currFile, _, _ := runtime.Caller(0)
 	filename := fmt.Sprintf("%s/%s", path.Dir(currFile), catechismTar)
