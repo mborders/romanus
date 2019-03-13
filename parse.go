@@ -104,15 +104,15 @@ func (c *Catechism) buildSummary() {
 	for i := range c.Parts {
 		part := c.Parts[i]
 		ps := PartSummary{
-			Title: part.Title,
+			Title:      part.Title,
 			PartNumber: part.PartNumber,
-			Articles: []ArticleSummary{},
+			Articles:   []ArticleSummary{},
 		}
 
 		for j := range part.Articles {
 			a := part.Articles[j]
 			ps.Articles = append(ps.Articles, ArticleSummary{
-				Title: a.Title,
+				Title:         a.Title,
 				ArticleNumber: a.ArticleNumber,
 			})
 		}
